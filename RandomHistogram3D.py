@@ -197,6 +197,9 @@ class RandomWalk():
         elif choose==3:
             width = int(self.micropore.size/2)
             self.initialStep = [random.randint(-1*width, width), random.randint(-1*width, width), random.randint(-1*width, width)]
+            while(self.cube(self.initialStep[0],self.initialStep[1], self.initialStep[2])==0):
+                self.initialStep = [random.randint(-1*width, width), random.randint(-1*width, width), random.randint(-1*width, width)]
+    
         return 
 
     def walkingMacropore(self):

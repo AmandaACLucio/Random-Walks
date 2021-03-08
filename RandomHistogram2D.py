@@ -201,6 +201,9 @@ class RandomWalk():
         elif choose==3:
             width = int(self.micropore.size/2)
             self.initialStep = [random.randint(-1*width, width), random.randint(-1*width, width)]
+            while(self.square(self.initialStep[0],self.initialStep[1])==0):
+                self.initialStep = [random.randint(-1*width, width), random.randint(-1*width, width)]
+
         return 
 
     def walkingMacropore(self):
@@ -335,7 +338,7 @@ class RandomWalk():
         return self.walkingMicropore(followingRule)
 
 
-############################################ Write Files ###############################################
+######################################### Write Files ###############################################
 
 class RandomWalkWalking():
 
@@ -421,7 +424,7 @@ class RandomWalkWalking():
     def endFile(self):
             
         mediaSteps = self.sumCountSteps/self.numberWalks
-        macroporosity = ((4/3)*numpy.pi*(self.macroporousSize**3))/self.microporousSize**3
+        macroporosity = (numpy.pi*(self.macroporousSize**2))/(self.microporousSize**2)
 
         self.fileTxt.write("===========================================================================================\n")
         self.fileTxt.write("The average step for "+str(self.numberWalks)+" random walkers is "+str(mediaSteps))
